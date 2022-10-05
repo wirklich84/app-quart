@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:  
+
+  mongodb:
+    container_name: monguito
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=edelacruz
+      - MONGO_INITDB_ROOT_PASSWORD=sip18DNK.* 
+    volumes:
+      - data:/data/db
+
+
+volumes:
+  data:
+    
