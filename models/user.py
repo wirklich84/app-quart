@@ -1,5 +1,4 @@
-import email
-from enum import unique
+from dataclasses import Field
 from pydantic import BaseModel, EmailStr
 from beanie import Document, Indexed
 

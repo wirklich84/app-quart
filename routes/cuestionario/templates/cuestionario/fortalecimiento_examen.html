@@ -1,0 +1,128 @@
+{% extends "base_home.html" %}
+
+{% block css %}
+<style>
+    p {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="d-flex justify-content-center">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h4>Fortalecimiento de la seguridad de la información</h4>
+                  </div>
+                <div class="card-body"> 
+                    <div class="text-center">
+                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
+                            <div>
+                               <strong>Instrucciones: </strong>Seleccione solo UNA respuesta a cada uno de los cuestionamientos descritos.
+                            </div>
+                          </div>
+                    </div>
+                  <form >
+                        <div class="row">
+                            <div class="col">
+                                <p> 1) En SFERP S.C. ¿Qué entendemos por política de seguridad de información?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_1" id="pregunta_11">
+                                    <label class="form-check-label" for="pregunta_11">
+                                        Son lineamientos técnicos y administrativos que fomentan la seguridad entorno a la información y las personas que interactúan con ella.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_1" id="pregunta_12">
+                                    <label class="form-check-label" for="pregunta_12">
+                                        Son las normas que vigilan y regulan la creación de información dentro de la organización, sus clientes y proveedores.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_1" id="pregunta_13">
+                                    <label class="form-check-label" for="pregunta_13">
+                                        Indica la forma ordenada y segura de realizar diversas operaciones en forma práctica, en los que se involucra la información de la empresa, así como todas las personas que la integran.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <p> 2) Video 1. Después de ver el video, piensa como empleado de Qualicart y describe al menos 1 forma en que pudieras haber prevenido ó evitado el desastre que les ocurrió.</p>
+                                <textarea class="form-control" name="pregunta_2" id="pregunta_2" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <p> 3) Identifica cuales son dos métodos usados por atacantes para vulnerar una organización o su información.</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_3" id="pregunta_31">
+                                    <label class="form-check-label" for="pregunta_31">
+                                        Troyanos y Ransomware
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_3" id="pregunta_32">
+                                    <label class="form-check-label" for="pregunta_32">
+                                        Suplantación de identidad y Denegación de servicios
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_3" id="pregunta_33">
+                                    <label class="form-check-label" for="pregunta_33">
+                                        Sistemas viejos e inseguros, falta de actualizaciones de software.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <p> 4) Video 2. Después de ver el video, piensa como empleado de Aupticon y describe al menos 1 forma en que pudieras haber prevenido ó evitado el desastre que les ocurrió.</p>
+                                <textarea class="form-control" name="pregunta_4" id="pregunta_4" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <p> 5) Identifica las acciones en seguridad de la información que TÚ puedes aplicar en forma inmediata y constante, para contribuir con un entorno de trabajo más seguro para todos en SFERP S.C.</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_5" id="pregunta_51">
+                                    <label class="form-check-label" for="pregunta_51">
+                                        Encriptar mis documentos, eliminar cosas que no son importantes e instalar un antivirus.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_5" id="pregunta_52">
+                                    <label class="form-check-label" for="pregunta_52">
+                                        Poner más atención en correos electrónicos entrantes, cambiar mis contraseñas seguras.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_5" id="pregunta_53">
+                                    <label class="form-check-label" for="pregunta_53">
+                                        Verificar los niveles de seguridad de mis redes sociales, correo personal y mi celular.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row pt-3">
+                            <div class="col">
+                                <div class="text-center">
+                                    <button class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>                   
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

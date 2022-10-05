@@ -19,7 +19,7 @@ async def start_database():
 
 @app.get('/')
 async def index():
-    return redirect(url_for('user.get_user_login'))
+    return redirect(url_for('user.user_login'))
 
 
 app.register_blueprint(user_route)
