@@ -1,8 +1,8 @@
-from pyexpat import model
-from quart import Blueprint, render_template, session, request, redirect, url_for, flash
+from urllib import response
+from quart import Blueprint, render_template, session, request, redirect, url_for, flash, Response
 from quart_auth import login_required, current_user
 from models.cuestionario import FortalecimientoSegudadInfo
-
+import pdfkit
 
 cuestionario_route = Blueprint('cuestionario', __name__, url_prefix='/cuestionario', template_folder='templates')
 
@@ -31,7 +31,10 @@ async def fortalecimiento_examen():
     pregunta_2 : str = ""
     pregunta_3 : str = ""
     pregunta_4 : str = ""
-    pregunta_5 : str = ""
+    pregunta_5 : str = ""  
+
+
+
 
     if request.method == 'GET':
         session["fortalecimiento_info"] = 1
@@ -53,7 +56,34 @@ async def fortalecimiento_examen():
             encuesta = FortalecimientoSegudadInfo(usuario_id=current_user.auth_id, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
             
             await encuesta.create()
+
+            session.pop('fortalecimiento_info', None)
+
+            return redirect(url_for('cuestionario.index'))
         
         
         
     return await render_template('cuestionario/fortalecimiento_examen.html')
+
+
+@cuestionario_route.route('/pdf/<id>', methods=['GET','POST'])
+async def pdf(id):
+    
+    cuestionario = FortalecimientoSegudadInfo.get(id)
+
+    out = await render_template('cuestionario/fotalecimiento_pdf.html', cuestionario=cuestionario)
+
+    
+    # PDF options
+    options = {
+        "page-size": "LETTER",
+        "margin-top": "1.0cm",
+        "margin-right": "1.0cm",
+        "margin-bottom": "1.0cm",
+        "margin-left": "1.0cm",
+        "encoding": "UTF-8",
+    }
+
+    pdf = pdfkit.from_string(out, options=options)
+
+    return Response(pdf, mimetype="application/pdf")

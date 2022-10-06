@@ -1,11 +1,9 @@
-from sqlite3 import DataError
-from pydantic import  BaseModel 
-from beanie import Document
+from beanie import Document, PydanticObjectId
 from datetime import datetime
 
 class FortalecimientoSegudadInfo(Document):
     fecha_realizado : datetime = datetime.now()
-    usuario_id : str
+    usuario_id : PydanticObjectId
     pregunta_1 : str
     pregunta_2 : str
     pregunta_3 : str
