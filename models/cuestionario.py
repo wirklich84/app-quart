@@ -6,11 +6,11 @@ from datetime import datetime
 class FortalecimientoSegudadInfo(Document):
     fecha_realizado : datetime = datetime.now()
     usuario_id : str
-    pregunta_1 : int
-    pregunta_2 : int
-    pregunta_3 : int
-    pregunta_4 : int
-    pregunta_5 : int
+    pregunta_1 : str
+    pregunta_2 : str
+    pregunta_3 : str
+    pregunta_4 : str
+    pregunta_5 : str
 
     class Collection:
         name = "fortalecimiento_sgi"

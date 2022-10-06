@@ -10,7 +10,30 @@
 
 {% block content %}
     <div class="container mt-3">
-        <div class="d-flex justify-content-center">
+        <div class="row p-3">
+            <div class="col">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            {% if category == 'error' %}
+                                <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                                    {{ message }}
+                                    <button type="submit" class="btn-close"  data-bs-dismiss="alert" aria-label="Close" ></button>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                                    {{ message }}
+                                    <button type="submit" class="close"  data-dismiss="alert" >
+                                        <span arial-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">            
             <div class="card">
                 <div class="card-header text-center">
                     <h4>Fortalecimiento de la seguridad de la información</h4>
@@ -26,24 +49,24 @@
                             </div>
                           </div>
                     </div>
-                  <form >
+                  <form method="POST" action="{{ url_for('cuestionario.fortalecimiento_examen') }}">
                         <div class="row">
                             <div class="col">
                                 <p> 1) En SFERP S.C. ¿Qué entendemos por política de seguridad de información?</p>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_1" id="pregunta_11">
+                                    <input class="form-check-input" type="radio" name="pregunta_1" value="1" id="pregunta_11">
                                     <label class="form-check-label" for="pregunta_11">
                                         Son lineamientos técnicos y administrativos que fomentan la seguridad entorno a la información y las personas que interactúan con ella.
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_1" id="pregunta_12">
+                                    <input class="form-check-input" type="radio" name="pregunta_1" value="2" id="pregunta_12">
                                     <label class="form-check-label" for="pregunta_12">
                                         Son las normas que vigilan y regulan la creación de información dentro de la organización, sus clientes y proveedores.
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_1" id="pregunta_13">
+                                    <input class="form-check-input" type="radio" name="pregunta_1" value="3" id="pregunta_13">
                                     <label class="form-check-label" for="pregunta_13">
                                         Indica la forma ordenada y segura de realizar diversas operaciones en forma práctica, en los que se involucra la información de la empresa, así como todas las personas que la integran.
                                     </label>
@@ -57,24 +80,24 @@
                                 <textarea class="form-control" name="pregunta_2" id="pregunta_2" rows="5"></textarea>
                             </div>
                         </div>
-                        <hr>
+                        <hr>                        
                         <div class="row pt-3">
                             <div class="col">
                                 <p> 3) Identifica cuales son dos métodos usados por atacantes para vulnerar una organización o su información.</p>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_3" id="pregunta_31">
+                                    <input class="form-check-input" type="radio" name="pregunta_3" value="1" id="pregunta_31">
                                     <label class="form-check-label" for="pregunta_31">
                                         Troyanos y Ransomware
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_3" id="pregunta_32">
+                                    <input class="form-check-input" type="radio" name="pregunta_3" value="2" id="pregunta_32">
                                     <label class="form-check-label" for="pregunta_32">
                                         Suplantación de identidad y Denegación de servicios
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_3" id="pregunta_33">
+                                    <input class="form-check-input" type="radio" name="pregunta_3" value="3" id="pregunta_33">
                                     <label class="form-check-label" for="pregunta_33">
                                         Sistemas viejos e inseguros, falta de actualizaciones de software.
                                     </label>
@@ -93,19 +116,19 @@
                             <div class="col">
                                 <p> 5) Identifica las acciones en seguridad de la información que TÚ puedes aplicar en forma inmediata y constante, para contribuir con un entorno de trabajo más seguro para todos en SFERP S.C.</p>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_5" id="pregunta_51">
+                                    <input class="form-check-input" type="radio" name="pregunta_5" value="1" id="pregunta_51">
                                     <label class="form-check-label" for="pregunta_51">
                                         Encriptar mis documentos, eliminar cosas que no son importantes e instalar un antivirus.
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_5" id="pregunta_52">
+                                    <input class="form-check-input" type="radio" name="pregunta_5" value="2" id="pregunta_52">
                                     <label class="form-check-label" for="pregunta_52">
                                         Poner más atención en correos electrónicos entrantes, cambiar mis contraseñas seguras.
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pregunta_5" id="pregunta_53">
+                                    <input class="form-check-input" type="radio" name="pregunta_5" value="3" id="pregunta_53">
                                     <label class="form-check-label" for="pregunta_53">
                                         Verificar los niveles de seguridad de mis redes sociales, correo personal y mi celular.
                                     </label>
@@ -116,7 +139,7 @@
                         <div class="row pt-3">
                             <div class="col">
                                 <div class="text-center">
-                                    <button class="btn btn-primary">Guardar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
                         </div>
