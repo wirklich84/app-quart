@@ -71,6 +71,8 @@ async def pdf(id):
     
     cuestionario = FortalecimientoSegudadInfo.get(id)
 
+    print(cuestionario.user)
+
     out = await render_template('cuestionario/fotalecimiento_pdf.html', cuestionario=cuestionario)
 
     
