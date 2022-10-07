@@ -1,7 +1,7 @@
-from urllib import response
 from quart import Blueprint, render_template, session, request, redirect, url_for, flash, Response
 from quart_auth import login_required, current_user
-from models.cuestionario import FortalecimientoSegudadInfo
+from models.user import User
+from models.cuestionario import FortalecimientoSegudadInfo, UserData
 import pdfkit
 
 cuestionario_route = Blueprint('cuestionario', __name__, url_prefix='/cuestionario', template_folder='templates')
@@ -53,7 +53,12 @@ async def fortalecimiento_examen():
             await flash("Falta algun campo por llenar", category="error")
             print("esta alguno vacio")
         else:
-            encuesta = FortalecimientoSegudadInfo(usuario_id=current_user.auth_id, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
+            usuario = await User.get(current_user.auth_id)
+            
+            print(usuario)
+            
+            user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email)
+            encuesta = FortalecimientoSegudadInfo(user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
             
             await encuesta.create()
 
@@ -66,12 +71,12 @@ async def fortalecimiento_examen():
     return await render_template('cuestionario/fortalecimiento_examen.html')
 
 
-@cuestionario_route.route('/pdf/<id>', methods=['GET','POST'])
-async def pdf(id):
+@cuestionario_route.route('/fotalecimiento/pdf/<string:id>', methods=['GET','POST'])
+async def pdf(id):  
+      
+    cuestionario = await FortalecimientoSegudadInfo.get(id)
     
-    cuestionario = FortalecimientoSegudadInfo.get(id)
-
-    print(cuestionario.user)
+    print(cuestionario.user_info.name)
 
     out = await render_template('cuestionario/fotalecimiento_pdf.html', cuestionario=cuestionario)
 
