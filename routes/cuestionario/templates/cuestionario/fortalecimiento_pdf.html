@@ -42,7 +42,7 @@
     <td style="width: 25%; text-align: center; height: 24px;"><strong>Departamento</strong></td>
     <td style="width: 25%; height: 24px;">&nbsp;</td>
     <td style="width: 25%; text-align: center; height: 24px;"><strong>Fecha</strong></td>
-    <td style="width: 25%; height: 24px;">&nbsp;</td>
+    <td style="width: 25%; height: 24px;"> {{ respuestas.fecha }} </td>
     </tr>
     </tbody>
     </table>
@@ -57,61 +57,57 @@
     </tr>
     </tbody>
     </table>
-    <p>1) En SFERP S.C. &iquest;Qu&eacute; entendemos por <u>pol&iacute;tica de seguridad</u>&nbsp;de informaci&oacute;n?</p>
+    <p><strong>1) En SFERP S.C. &iquest;Qu&eacute; entendemos por pol&iacute;tica de seguridad de informaci&oacute;n?</strong></p>
     <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
     <tbody>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; text-align: center; height: 18px;">(&nbsp;   )</td>
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta1.opcion1 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Son lineamientos t&eacute;cnicos y administrativos que fomentan la seguridad entorno a la informaci&oacute;n y las personas que interact&uacute;an con ella.</td>
     </tr>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; text-align: center; height: 18px;">(&nbsp; )</td>
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta1.opcion2 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Son las normas que vigilan y regulan la creaci&oacute;n de informaci&oacute;n dentro de la organizaci&oacute;n, sus clientes y proveedores.</td>
     </tr>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; height: 18px; text-align: center;">(&nbsp; )</td>
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta1.opcion3 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Indica la forma ordenada y segura de realizar diversas operaciones en forma pr&aacute;ctica, en los que se involucra la informaci&oacute;n de la empresa, as&iacute; como todas las personas que la integran.</td>
     </tr>
     </tbody>
     </table>
-    <p>2) Video 1. Despu&eacute;s de ver el video, piensa como empleado de Qualicart y describe al menos 1 forma en que pudieras haber prevenido &oacute; evitado el desastre que les ocurri&oacute;.</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>3) Identifica cuales son dos m&eacute;todos usados por atacantes para vulnerar una organizaci&oacute;n o su informaci&oacute;n</p>
+    <p><strong>2) Video 1. Despu&eacute;s de ver el video, piensa como empleado de Qualicart y describe al menos 1 forma en que pudieras haber prevenido &oacute; evitado el desastre que les ocurri&oacute;.</strong></p>
+    <p> {{ cuestionario.pregunta_2 }} </p>
+    <p><strong>3) Identifica cuales son dos m&eacute;todos usados por atacantes para vulnerar una organizaci&oacute;n o su informaci&oacute;n</strong></p>
     <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
     <tbody>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; text-align: center; height: 18px;">(&nbsp; )</td>
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta3.opcion1 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Troyanos y Ransomware</td>
     </tr>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; text-align: center; height: 18px;">(&nbsp; )</td>
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta3.opcion2 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Suplantaci&oacute;n de identidad y Denegaci&oacute;n de servicios</td>
     </tr>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; height: 18px; text-align: center;">(&nbsp; )</td>
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta3.opcion3 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Sistemas viejos e inseguros, falta de actualizaciones de software.</td>
     </tr>
     </tbody>
     </table>
-    <p>4) Video 2. Despu&eacute;s de ver el video, piensa como empleado de Aupticon y describe al menos 1 forma en que pudieras haber prevenido &oacute; evitado el desastre que les ocurri&oacute;.</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>5) Identifica las acciones en seguridad de la informaci&oacute;n que T&Uacute; puedes aplicar en forma inmediata y constante, para contribuir con un entorno de trabajo m&aacute;s seguro para todos en SFERP S.C.</p>
+    <p><strong>4) Video 2. Despu&eacute;s de ver el video, piensa como empleado de Aupticon y describe al menos 1 forma en que pudieras haber prevenido &oacute; evitado el desastre que les ocurri&oacute;.</strong></p>
+    <p> {{ cuestionario.pregunta_4 }} </p>
+    <p><strong>5) Identifica las acciones en seguridad de la informaci&oacute;n que T&Uacute; puedes aplicar en forma inmediata y constante, para contribuir con un entorno de trabajo m&aacute;s seguro para todos en SFERP S.C.</strong></p>
     <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
     <tbody>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; text-align: center; height: 18px;">(&nbsp; )</td>
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta5.opcion1 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Encriptar mis documentos, eliminar cosas que no son importantes e instalar un antivirus.</td>
     </tr>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; text-align: center; height: 18px;">(&nbsp; )</td>
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta5.opcion2 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Poner m&aacute;s atenci&oacute;n en correos electr&oacute;nicos entrantes, cambiar mis contrase&ntilde;as seguras.</td>
     </tr>
     <tr style="height: 18px;">
-    <td style="width: 5.25568%; height: 18px; text-align: center;">(&nbsp; )</td>
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta5.opcion3 }} )</td>
     <td style="width: 94.7443%; height: 18px;">Verificar los niveles de seguridad de mis redes sociales, correo personal y mi celular.</td>
     </tr>
     </tbody>

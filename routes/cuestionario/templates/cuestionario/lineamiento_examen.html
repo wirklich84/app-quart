@@ -36,7 +36,7 @@
         <div class="d-flex justify-content-center">            
             <div class="card">
                 <div class="card-header text-center">
-                    <h4>Fortalecimiento de la seguridad de la información</h4>
+                    <h4>Lineamientos esenciales sobre seguridad de la información</h4>
                   </div>
                 <div class="card-body"> 
                     <div class="text-center">
@@ -49,26 +49,26 @@
                             </div>
                           </div>
                     </div>
-                  <form method="POST" action="{{ url_for('cuestionario.fortalecimiento_examen') }}">
+                  <form method="POST" action="{{ url_for('cuestionario.lineamiento_examen') }}">
                         <div class="row">
                             <div class="col">
-                                <p> 1) En SFERP S.C. ¿Qué entendemos por política de seguridad de información?</p>
+                                <p> 1) SFERP, S.C. está obligado como Proveedor de Certificación ante el SAT al cumplimiento de los siguientes normativas y controles:</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_1" value="1" id="pregunta_11">
                                     <label class="form-check-label" for="pregunta_11">
-                                        Son lineamientos técnicos y administrativos que fomentan la seguridad entorno a la información y las personas que interactúan con ella.
+                                        PCCFDI / PCRDD
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_1" value="2" id="pregunta_12">
                                     <label class="form-check-label" for="pregunta_12">
-                                        Son las normas que vigilan y regulan la creación de información dentro de la organización, sus clientes y proveedores.
+                                        SGSI (ISO) / CMMI / LFPDPPP
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_1" value="3" id="pregunta_13">
                                     <label class="form-check-label" for="pregunta_13">
-                                        Indica la forma ordenada y segura de realizar diversas operaciones en forma práctica, en los que se involucra la información de la empresa, así como todas las personas que la integran.
+                                        PCCFDI / PCRDD / SGSI (ISO) / CMMI
                                     </label>
                                 </div>
                             </div>
@@ -76,30 +76,47 @@
                         <hr>
                         <div class="row pt-3">
                             <div class="col">
-                                <p> 2) Video 1. Después de ver el video, piensa como empleado de Qualicart y describe al menos 1 forma en que pudieras haber prevenido ó evitado el desastre que les ocurrió.</p>
-                                <textarea class="form-control" name="pregunta_2" id="pregunta_2" rows="5"></textarea>
+                                <p> 2) Ante el SAT, algunas de las áreas de control que están presentes en sus matrices de control, son:</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_2" value="1" id="pregunta_21">
+                                    <label class="form-check-label" for="pregunta_21">
+                                        Postura de la empresa, Operación y gestión de la seguridad, Cumplimiento legal y regulatorio.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_2" value="2" id="pregunta_22">
+                                    <label class="form-check-label" for="pregunta_22">
+                                        Seguridad de la plataforma, Cumplimiento legal y regulatorio, Desarrollo sustentable.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_2" value="3" id="pregunta_23">
+                                    <label class="form-check-label" for="pregunta_23">
+                                        Cumplimiento legal y regulatorio,  Aviso de privacidad y buenas prácticas de operación.
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <hr>                        
                         <div class="row pt-3">
                             <div class="col">
-                                <p> 3) Identifica cuales son dos métodos usados por atacantes para vulnerar una organización o su información.</p>
+                                <p> 3) SGSI es un Sistema de Gestión de Seguridad de la Información que tiene...</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_3" value="1" id="pregunta_31">
                                     <label class="form-check-label" for="pregunta_31">
-                                        Troyanos y Ransomware
+                                        ... un compendio de buenas prácticas y normativa, que garantiza que la empresa es 100%
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_3" value="2" id="pregunta_32">
                                     <label class="form-check-label" for="pregunta_32">
-                                        Suplantación de identidad y Denegación de servicios
+                                        ... un marco de gobernanza de tecnologías de información y seguridad en los sistemas.
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_3" value="3" id="pregunta_33">
                                     <label class="form-check-label" for="pregunta_33">
-                                        Sistemas viejos e inseguros, falta de actualizaciones de software.
+                                        ... una guía con objetivos y controles para lograr la gestión de la seguridad de la información.
                                     </label>
                                 </div>
                             </div>
@@ -107,30 +124,47 @@
                         <hr>
                         <div class="row pt-3">
                             <div class="col">
-                                <p> 4) Video 2. Después de ver el video, piensa como empleado de Aupticon y describe al menos 1 forma en que pudieras haber prevenido ó evitado el desastre que les ocurrió.</p>
-                                <textarea class="form-control" name="pregunta_4" id="pregunta_4" rows="5"></textarea>
+                                <p> 4) ¿Por qué es importante cumplir las políticas y procedimientos de la organización?</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_4" value="1" id="pregunta_41">
+                                    <label class="form-check-label" for="pregunta_41">
+                                        Mejora la ejecución y la velocidad en que se desempeñan las unidades organizacionales.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_4" value="2" id="pregunta_42">
+                                    <label class="form-check-label" for="pregunta_42">
+                                        Crea entornos más seguros para ejecutar los sistemas de Emisión y Recepción.
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pregunta_4" value="3" id="pregunta_43">
+                                    <label class="form-check-label" for="pregunta_43">
+                                        Mejora la ejecución de los procesos administrativa y técnica de la organización, aumentando el control y la protección de la información.
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row pt-3">
                             <div class="col">
-                                <p> 5) Identifica las acciones en seguridad de la información que TÚ puedes aplicar en forma inmediata y constante, para contribuir con un entorno de trabajo más seguro para todos en SFERP S.C.</p>
+                                <p> 5) De los indicados a continuación ¿cuáles serían ejemplos de amenazas internas o externa a la seguridad de la información de la empresa?</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_5" value="1" id="pregunta_51">
                                     <label class="form-check-label" for="pregunta_51">
-                                        Encriptar mis documentos, eliminar cosas que no son importantes e instalar un antivirus.
+                                        Brokers de retransmisión y errores en el WSLCD.
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_5" value="2" id="pregunta_52">
                                     <label class="form-check-label" for="pregunta_52">
-                                        Poner más atención en correos electrónicos entrantes, cambiar mis contraseñas seguras.
+                                        Problemas de configuración en Hardware / Software y ataques informáticos.
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="pregunta_5" value="3" id="pregunta_53">
                                     <label class="form-check-label" for="pregunta_53">
-                                        Verificar los niveles de seguridad de mis redes sociales, correo personal y mi celular.
+                                        Mala calidad del aire, calentamiento global y enfermedades infecciosas / contagiosas .
                                     </label>
                                 </div>
                             </div>

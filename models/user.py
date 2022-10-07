@@ -5,7 +5,6 @@ from beanie import Document, Indexed
 class User(Document):
     full_name : str
     email : Indexed(EmailStr, unique=True)
-    dep: str
     password : str
 
     class Collection:

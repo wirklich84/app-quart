@@ -1,7 +1,9 @@
 from quart import Blueprint, render_template, request, flash, redirect, url_for, session
 from models.user import User
 from quart_bcrypt import check_password_hash, async_generate_password_hash
-from quart_auth import login_user, AuthUser, logout_user
+from quart_auth import login_user, AuthUser, logout_user, current_user
+
+from routes import cuestionario
 
 
 user_route = Blueprint('user',  __name__, url_prefix='/user',template_folder='templates')
@@ -48,6 +50,10 @@ async def user_login():
     username : str = ""
     password : str = ""
     
+
+    if await current_user.is_authenticated:
+        return redirect(url_for('cuestionario.index'))
+    
     if request.method == 'POST':
         form: dict = await request.form
         username = form.get("email", "")      
@@ -64,8 +70,7 @@ async def user_login():
                 login_user(AuthUser(str(user.id)))
                 return redirect(url_for('cuestionario.index'))
             else:
-                await flash("Usuario y / o contraseña no son validos", category="error") 
-            
+                await flash("Usuario y / o contraseña no son validos", category="error")            
             
             
         return await render_template('user/login.html')
@@ -77,5 +82,8 @@ async def user_login():
 @user_route.route("/logout", methods=['GET', 'POST'])
 async def logout():    
     session.pop('fortalecimiento_info', None)
+    session.pop('fortalecimiento_cuestionario_completado', None)
+    session.pop('lineamiento_info', None)
+    session.pop('lineamiento_cuestionario_completado', None)
     logout_user()
     return redirect(url_for('user.user_login'))

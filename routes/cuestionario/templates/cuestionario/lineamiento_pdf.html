@@ -1,0 +1,169 @@
+<table style="border-collapse: collapse; width: 100%; height: 67px;" border="1">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 21.1963%; height: 67px;" rowspan="2"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://www.indizze.mx/sites/default/files/imagecache/logo_pagina/logos-empresa/logo_solucion_factible_1.jpg" alt="" width="111" height="71" /></td>
+    <td style="width: 85.7322%; height: 18px;" colspan="8">
+    <h2 style="text-align: center;"><strong>Evaluaci&oacute;n de efectividad capacitaci&oacute;n</strong></h2>
+    </td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 7.95454%; height: 49px; text-align: center;"><strong>Clasificaci&oacute;n</strong></td>
+    <td style="width: 11.1111%; height: 49px; text-align: center; font-size: 12px;"><span style="color: #ff0000;">RESERVADO</span></td>
+    <td style="width: 11.1111%; height: 49px; text-align: center;"><strong>C&oacute;digo</strong></td>
+    <td style="width: 11.1111%; height: 49px; font-size: 12px;">FO-RH-009</td>
+    <td style="width: 11.1111%; height: 49px;"><strong>Versi&oacute;n</strong></td>
+    <td style="width: 11.1111%; height: 49px; text-align: center;">1.0</td>
+    <td style="width: 11.1111%; height: 49px;"><strong>Entrada en Vigor</strong></td>
+    <td style="width: 11.1111%; height: 49px;">01/02/2020</td>
+    </tr>
+    </tbody>
+    </table>
+    
+    <br>
+
+    <table style="border-collapse: collapse; width: 100%; height: 30px;" border="1">
+    <tbody>
+    <tr style="height: 30px;">
+    <td style="width: 25.5682%; height: 30px;"><strong>Cuestionario sobre tema:</strong></td>
+    <td style="width: 74.4318%; height: 30px;">Lineamientos esenciales sobre seguridad de la información</td>
+    </tr>
+    </tbody>
+    </table>
+    
+    <br>
+
+    <table style="border-collapse: collapse; width: 100%; height: 47px;" border="1">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 25%; text-align: center; height: 23px;"><strong>Nombre Completo</strong></td>
+    <td style="width: 25%; height: 23px;" colspan="3">{{ cuestionario.user_info.name }}</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 25%; text-align: center; height: 24px;"><strong>Departamento</strong></td>
+    <td style="width: 25%; height: 24px;">&nbsp;</td>
+    <td style="width: 25%; text-align: center; height: 24px;"><strong>Fecha</strong></td>
+    <td style="width: 25%; height: 24px;"> {{ respuestas.fecha }} </td>
+    </tr>
+    </tbody>
+    </table>
+     
+    <br>
+
+    <table style="border-collapse: collapse; width: 100%; height: 25px;" border="1">
+    <tbody>
+    <tr style="height: 25px;">
+    <td style="width: 16.4773%; height: 25px;"><strong>Instrucciones:</strong></td>
+    <td style="width: 83.5227%; height: 25px;">Seleccione solo UNA respuesta a cada uno de los cuestionamientos descritos.</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>1) SFERP, S.C. está obligado como Proveedor de Certificación ante el SAT al cumplimiento de los siguientes normativas y controles:</strong></p>
+    <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta1.opcion1 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">PCCFDI / PCRDD</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta1.opcion2 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">SGSI (ISO) / CMMI / LFPDPPP</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta1.opcion3 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">PCCFDI / PCRDD / SGSI (ISO) / CMMI</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>2) Ante el SAT, algunas de las áreas de control que están presentes en sus matrices de control, son:</strong></p>
+    <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta2.opcion1 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Postura de la empresa, Operación y gestión de la seguridad, Cumplimiento legal y regulatorio.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta2.opcion2 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Seguridad de la plataforma, Cumplimiento legal y regulatorio, Desarrollo sustentable.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta2.opcion3 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Cumplimiento legal y regulatorio,  Aviso de privacidad y buenas prácticas de operación.</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <p><strong>3) SGSI es un Sistema de Gestión de Seguridad de la Información que tiene...</strong></p>
+    <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta3.opcion1 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">... un compendio de buenas prácticas y normativa, que garantiza que la empresa es 100% segura.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta3.opcion2 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">... un marco de gobernanza de tecnologías de información y seguridad en los sistemas.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta3.opcion3 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">... una guía con objetivos y controles para lograr la gestión de la seguridad de la información.</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>4) ¿Por qué es importante cumplir las políticas y procedimientos de la organización?</strong></p>
+    <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta4.opcion1 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Mejora la ejecución y la velocidad en que se desempeñan las unidades organizacionales.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta4.opcion2 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Crea entornos más seguros para ejecutar los sistemas de Emisión y Recepción.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta4.opcion3 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Mejora la ejecución de los procesos administrativa y técnica de la organización, aumentando el control y la protección de la información.</td>
+    </tr>
+    </tbody>
+    </table>
+
+
+
+    <p><strong>5) De los indicados a continuación ¿cuáles serían ejemplos de amenazas internas o externa a la seguridad de la información de la empresa?</strong></p>
+    <table style="height: 54px; width: 100%; border-collapse: collapse;" border="0">
+    <tbody>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta5.opcion1 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Brokers de retransmisión y errores en el WSLCD.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; text-align: center; height: 18px;">( {{ respuestas.respuesta5.opcion2 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Problemas de configuración en Hardware / Software y ataques informáticos.</td>
+    </tr>
+    <tr style="height: 18px;">
+    <td style="width: 5.25568%; height: 18px; text-align: center;">( {{ respuestas.respuesta5.opcion3 }} )</td>
+    <td style="width: 94.7443%; height: 18px;">Mala calidad del aire, calentamiento global y enfermedades infecciosas / contagiosas .</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>&nbsp;</p>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <table style="width: 100%; border-collapse: collapse; border-style: none; border-color: #4972CB; border-top: solid;" border="0">
+    <tbody>
+    <tr>
+    <td style="width: 24.858%;">&nbsp;</td>
+    <td style="width: 50.142%; text-align: center;">Soluci&oacute;n factible Consultores</td>
+    <td style="width: 25%; text-align: right;">Pagina&nbsp; 1 de 1</td>
+    </tr>
+    </tbody>
+    </table>
