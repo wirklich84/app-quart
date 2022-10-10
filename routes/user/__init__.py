@@ -1,3 +1,4 @@
+from asyncio import format_helpers
 from quart import Blueprint, render_template, request, flash, redirect, url_for, session
 from models.user import User
 from quart_bcrypt import check_password_hash, async_generate_password_hash
@@ -12,6 +13,7 @@ user_route = Blueprint('user',  __name__, url_prefix='/user',template_folder='te
 async def user_register():
     name: str = ""
     username : str = ""
+    dep : str = ""
     password : str = ""
     password_confirm : str = ""
 
@@ -20,6 +22,7 @@ async def user_register():
         
         name = form.get("name", "")
         username = form.get("email", "")
+        dep = form.get("dep","")
         password = form.get("password", "")
         password_confirm = form.get("password_confirm", "")
         
@@ -35,10 +38,11 @@ async def user_register():
         if user:
             await flash("Usuario ya existe", category="error")
         else:
-            user =  User(full_name=name, email=username, password= password_hash)      
+            user =  User(full_name=name, email=username, dep=dep, password= password_hash)      
             await user.create()
             print("se creo el usuario")
-            return redirect(url_for('cuestionario.index'))    
+            await flash("Usuario creado satisfactoriamente!", category="success")
+            return redirect(url_for('index'))    
         
     
     return await render_template('user/register.html')
@@ -60,20 +64,27 @@ async def user_login():
         password = form.get("password", "")
         
         if not username or not password:
-            await flash("Usuario y / o contraseña oblogatorios.    ", category="error")   
+            await flash("Usuario y / o contraseña oblogatorios.    ", category="error")  
             
         user = await User.find_one(User.email == username)
+
+        print(user)
         
-        if user:            
-            if check_password_hash(user.password, password):
+        if user is None:
+            await flash("Usuario y / o contraseña no son validos", category="error")
+            print("No existe el usuario-")                      
+            
+        elif check_password_hash(user.password, password):
                 session["fortalecimiento_info"] = 0
                 login_user(AuthUser(str(user.id)))
                 return redirect(url_for('cuestionario.index'))
-            else:
-                await flash("Usuario y / o contraseña no son validos", category="error")            
+        else:
+            await flash("Usuario y / o contraseña no son validos", category="error")
+            print("usuario y contraseña no validos") 
+                
             
             
-        return await render_template('user/login.html')
+        #return await render_template('user/login.html')
     
     
     return await render_template('user/login.html' )

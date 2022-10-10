@@ -4,6 +4,7 @@ from beanie import Document, Indexed
 
 class User(Document):
     full_name : str
+    dep : str
     email : Indexed(EmailStr, unique=True)
     password : str
 
@@ -33,6 +34,7 @@ class UserData(BaseModel):
         
 class UserLogin(BaseModel):
     email : EmailStr
+    dep : str
     password : str
     
     class Config:

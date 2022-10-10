@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
 {% block css %}
+  <style>
+    .logo {
+      width: 90px;
+      height: 50px;
+      background-color: white;
+      border-radius: 8px;
+      padding: 3px;      
+    }
+  </style>
 {% endblock %}
 
 {% block navbar %}
 
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{url_for('cuestionario.index')}}">SF-Consultores</a>
+      <a class="navbar-brand" href="{{url_for('cuestionario.index')}}">
+        <img class="logo" src="/static/img/logo_pdf.png">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
