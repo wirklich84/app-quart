@@ -1,7 +1,8 @@
-from quart import Blueprint, render_template, session, request, redirect, url_for, flash, Response, make_response
+from urllib import response
+from quart import Blueprint, render_template, session, request, redirect, url_for, flash, Response, make_response, jsonify
 from quart_auth import login_required, current_user
 from models.user import User
-from models.cuestionario import FortalecimientoSegudadInfo, LineamientoSeguridadInfo, UserData
+from models.cuestionario import FortalecimientoSegudadInfo, LineamientoSeguridadInfo, UserData, Cuestionarios
 import pdfkit
 
 cuestionario_route = Blueprint('cuestionario', __name__, url_prefix='/cuestionario', template_folder='templates')
@@ -80,7 +81,7 @@ async def fortalecimiento_examen():
         else:
             usuario = await User.get(current_user.auth_id)
             
-            user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email)
+            user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email, dep=usuario.dep)
             encuesta = FortalecimientoSegudadInfo(user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
             
             encuesta_id = await encuesta.create()
@@ -254,7 +255,7 @@ async def lineamiento_examen():
         else:
             usuario = await User.get(current_user.auth_id)
             
-            user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email)
+            user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email, dep=usuario.dep)
             encuesta = LineamientoSeguridadInfo(user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
             
             encuesta_id = await encuesta.create()
@@ -375,3 +376,49 @@ async def lineamiento_pdf(id):
     response.headers['Content-Disposition'] = f'attachment; filename={nombre_archivo}'
 
     return response
+
+
+@cuestionario_route.route('/all', methods=['GET', 'POST'])
+async def all():
+
+    return await render_template("cuestionario/cuestionarios_all.html")
+
+@cuestionario_route.route('ajaxAll', methods=['GET','POST'])
+async def ajaxAll():
+
+    if request.method == 'POST':
+        form: dict = await request.form
+
+        draw: str = ""
+
+        draw = form.get("draw", "")
+
+        print(draw)
+
+        cuestionarios = await Cuestionarios.all().to_list()
+
+        data = []
+
+        for row in cuestionarios:
+
+            if row.codigo == "FO-OR-019 - Fortalecimiento":
+                url_codigo = f"/cuestionario/fortalecimiento/pdf/{row.id}"
+            else:
+                url_codigo = f"/cuestionario/lineamiento/pdf/{row.id}"
+
+
+            data.append({
+                'fecha' : row.fecha_realizado,
+                'nombre' : row.user_info.name,
+                'codigo' : row.codigo,
+                'pdf' :  f'<a role="button" href="{url_codigo}" class="btn btn-danger"> Descargar PDF</a>'
+            })
+            
+        response = {
+            'draw' : draw,
+            'iTotalRecords' : 2,
+            'iTotalDisplayRecords' : 2,
+            'aaData' : data
+        }
+
+        return jsonify(response)  

@@ -1,0 +1,49 @@
+{% extends "base_home.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex justify-content-center pt-3"></div>
+        <div class="text-center p-2">
+            <h3 >Cuestionarios</h3>
+        </div>
+        
+        <table class="table"  id="cuestionarios" >
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nombre</th>
+                    <th>Codigo</th>   
+                    <th>PDF</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+       var cuestionariosDatatable = $('#cuestionarios').DataTable({
+            'processing' : true,
+            'serverSide' : true,
+            'serverMethod' : 'post',
+            'ajax' : {
+                'url' : '{{ url_for("cuestionario.ajaxAll") }}'
+            },
+            'lengthMenu' : [[5, 10 , 25, 50, -1],[5, 10, 25, 50, "All"]],
+            'searching' : true,
+            'sort' : false,
+            'columns' : [
+                { data  : 'fecha'},
+                { data  : 'nombre'},
+                { data  : 'codigo'},
+                { data : 'pdf' }
+            ]
+        });
+    });
+</script>
+{% endblock %}
