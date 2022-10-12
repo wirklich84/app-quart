@@ -24,11 +24,14 @@ class FortalecimientoSegudadInfo(Document):
     pregunta_5 : str
     codigo : str = "FO-OR-019 - Fortalecimiento"
 
-    class Collection:
-        name = "fortalecimiento_sgi"
-    
     class Settings:
         union_doc = Cuestionarios
+
+    '''
+    class Collection:
+        name = "fortalecimiento_sgi"
+    '''
+    
 
 
 
@@ -43,9 +46,13 @@ class LineamientoSeguridadInfo(Document):
     pregunta_5 : str
     codigo : str = "FO-OR-018 - Lineamientos"
 
+    class Settings:
+        union_doc = Cuestionarios
+
+    '''
+
     class Collection:
         name = "lineamiento_sgi"
     
-    class Settings:
-        union_doc = Cuestionarios
+    '''
     

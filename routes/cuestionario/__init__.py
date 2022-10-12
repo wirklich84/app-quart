@@ -1,3 +1,5 @@
+from gettext import find
+from time import process_time_ns
 from urllib import response
 from quart import Blueprint, render_template, session, request, redirect, url_for, flash, Response, make_response, jsonify
 from quart_auth import login_required, current_user
@@ -388,18 +390,40 @@ async def ajaxAll():
 
     if request.method == 'POST':
         form: dict = await request.form
-
         draw: str = ""
+        start: int = 0
+        rowperpager: int = 0
+        searchValue: str = ""
 
         draw = form.get("draw", "")
+        start = int(form.get("start", 0))
+        rowperpager = int(form.get("length", 0))
+        searchValue = form.get("search[value]", "")
 
-        print(draw)
-
-        cuestionarios = await Cuestionarios.all().to_list()
+        print(draw)  
+        print(start)
+        print(rowperpager)
+        print(searchValue)
+        
+        totalRows = await Cuestionarios.all().count() 
+        
+        if searchValue == "":
+            cuestionarios = await Cuestionarios.find().skip(start).limit(rowperpager).to_list()
+        else:
+            cuestionarios = await Cuestionarios.find(FortalecimientoSegudadInfo.user_info.name == f"{searchValue}", 
+                                                 LineamientoSeguridadInfo.user_info.name == f"{searchValue}").skip(start).limit(rowperpager).to_list()
+        
+        
+        #print(cuestinario_fortalecimiento)
+        
+        totalRowsFilter = len(cuestionarios)
+        
+        print('total filtrado', totalRowsFilter)
 
         data = []
 
-        for row in cuestionarios:
+        for row in cuestionarios:          
+            
 
             if row.codigo == "FO-OR-019 - Fortalecimiento":
                 url_codigo = f"/cuestionario/fortalecimiento/pdf/{row.id}"
@@ -416,9 +440,11 @@ async def ajaxAll():
             
         response = {
             'draw' : draw,
-            'iTotalRecords' : 2,
-            'iTotalDisplayRecords' : 2,
+            'recordsTotal' : totalRowsFilter,
+            'recordsFiltered' : totalRows,
             'aaData' : data
         }
-
+        
+        
+        
         return jsonify(response)  
