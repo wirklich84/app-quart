@@ -1,9 +1,6 @@
-from gettext import find
-from time import process_time_ns
-from urllib import response
 from quart import Blueprint, render_template, session, request, redirect, url_for, flash, Response, make_response, jsonify
 from quart_auth import login_required, current_user
-from models.user import User
+from models.user import User, UserAdminView
 from models.cuestionario import FortalecimientoSegudadInfo, LineamientoSeguridadInfo, UserData, Cuestionarios
 import pdfkit
 
@@ -12,6 +9,7 @@ cuestionario_route = Blueprint('cuestionario', __name__, url_prefix='/cuestionar
 @cuestionario_route.route('/', methods=['GET', 'POST'])
 @login_required
 async def index():
+   
     return await render_template('cuestionario/index.html')
 
 
@@ -107,12 +105,10 @@ async def fotalecimiento_end():
 
     if 'fortalecimiento_id' in session:
         id_cuestionario = session["fortalecimiento_id"]
-
     
     return await render_template("cuestionario/fortalecimiento_end.html", id_cuestionario=id_cuestionario)
 
     
-
 
 
 @cuestionario_route.route('/fortalecimiento/pdf/<string:id>', methods=['GET','POST'])
@@ -381,11 +377,13 @@ async def lineamiento_pdf(id):
 
 
 @cuestionario_route.route('/all', methods=['GET', 'POST'])
+@login_required
 async def all():
 
     return await render_template("cuestionario/cuestionarios_all.html")
 
 @cuestionario_route.route('ajaxAll', methods=['GET','POST'])
+@login_required
 async def ajaxAll():
 
     if request.method == 'POST':

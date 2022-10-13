@@ -1,10 +1,8 @@
-from asyncio import format_helpers
 from quart import Blueprint, render_template, request, flash, redirect, url_for, session
 from models.user import User
 from quart_bcrypt import check_password_hash, async_generate_password_hash
 from quart_auth import login_user, AuthUser, logout_user, current_user
 
-from routes import cuestionario
 
 
 user_route = Blueprint('user',  __name__, url_prefix='/user',template_folder='templates')
@@ -30,8 +28,6 @@ async def user_register():
         
         user = await User.find_one(User.email == username)
         
-        print(user)
-        
         if not username or not password:
             await flash("Usuario y / o contraseña oblogatorios.    ", category="error")
         
@@ -54,10 +50,13 @@ async def user_login():
     username : str = ""
     password : str = ""
     
+    
 
     if await current_user.is_authenticated:
         return redirect(url_for('cuestionario.index'))
     
+    
+
     if request.method == 'POST':
         form: dict = await request.form
         username = form.get("email", "")      
@@ -67,8 +66,6 @@ async def user_login():
             await flash("Usuario y / o contraseña oblogatorios.    ", category="error")  
             
         user = await User.find_one(User.email == username)
-
-        print(user)
         
         if user is None:
             await flash("Usuario y / o contraseña no son validos", category="error")
@@ -76,15 +73,12 @@ async def user_login():
             
         elif check_password_hash(user.password, password):
                 session["fortalecimiento_info"] = 0
-                login_user(AuthUser(str(user.id)))
+                login_user(AuthUser(str(user.id)))                
                 return redirect(url_for('cuestionario.index'))
         else:
             await flash("Usuario y / o contraseña no son validos", category="error")
             print("usuario y contraseña no validos") 
                 
-            
-            
-        #return await render_template('user/login.html')
     
     
     return await render_template('user/login.html' )

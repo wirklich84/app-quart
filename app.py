@@ -8,9 +8,11 @@ from routes.cuestionario import cuestionario_route
 
 app = Quart(__name__)
 
-AuthManager(app)
+app.config["QUART_AUTH_COOKIE_SECURE"] = False
 
 app.secret_key="chupas"
+
+AuthManager(app)
 
 @app.before_serving
 async def start_database():
