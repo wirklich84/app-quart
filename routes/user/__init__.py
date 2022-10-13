@@ -30,9 +30,16 @@ async def user_register():
         
         if not username or not password:
             await flash("Usuario y / o contraseña oblogatorios.    ", category="error")
-        
-        if user:
+            return redirect(url_for('user.user_register'))
+
+        elif password != password_confirm:
+            await flash("No coinciden las contraseñas.", category="error")
+            return redirect(url_for('user.user_register'))
+
+        elif user:
             await flash("Usuario ya existe", category="error")
+            return redirect(url_for('user.user_register'))
+            
         else:
             user =  User(full_name=name, email=username, dep=dep, password= password_hash)      
             await user.create()

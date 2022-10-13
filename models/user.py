@@ -1,4 +1,3 @@
-from dataclasses import Field
 from pydantic import BaseModel, EmailStr
 from beanie import Document, Indexed
 
@@ -7,6 +6,7 @@ class User(Document):
     dep : str
     email : Indexed(EmailStr, unique=True)
     password : str
+    is_admin : bool = False
 
     class Collection:
         name = "users"
@@ -44,3 +44,7 @@ class UserLogin(BaseModel):
                 "password"  : "sjk23#$s"
             }
         }
+
+class UserAdminView(BaseModel):
+    full_name: str
+    is_admin: bool

@@ -1,0 +1,16 @@
+FROM surnet/alpine-python-wkhtmltopdf:3.8.5-0.12.6-full-alpine12
+
+WORKDIR /code
+
+ADD requirements.txt /app/requirements.txt
+
+RUN /usr/local/bin/python -m pip install --upgrade pip 
+
+EXPOSE 5050
+
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+
+COPY . ./code/
+
+ENTRYPOINT python3 main.py

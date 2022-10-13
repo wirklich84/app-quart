@@ -1,6 +1,6 @@
+import os
 from quart import Quart, redirect, url_for
 from config.database import iniciar_db
-from models.user import User, UserData
 from quart_auth import AuthManager
 
 from routes.user import user_route
@@ -10,7 +10,7 @@ app = Quart(__name__)
 
 app.config["QUART_AUTH_COOKIE_SECURE"] = False
 
-app.secret_key="chupas"
+app.secret_key=os.environ["SECRET_KEY"]
 
 AuthManager(app)
 
