@@ -18,6 +18,7 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    command: "cp /usr/share/zoneinfo/America/Mexico_City /etc/localtime"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=edelacruz
       - MONGO_INITDB_ROOT_PASSWORD=sip18DNK.* 
