@@ -3,6 +3,7 @@ from quart_auth import login_required, current_user
 from models.user import User, UserAdminView
 from models.cuestionario import FortalecimientoSegudadInfo, LineamientoSeguridadInfo, UserData, Cuestionarios
 import pdfkit
+from datetime import datetime
 
 cuestionario_route = Blueprint('cuestionario', __name__, url_prefix='/cuestionario', template_folder='templates')
 
@@ -80,9 +81,11 @@ async def fortalecimiento_examen():
 
         else:
             usuario = await User.get(current_user.auth_id)
+
+            fecha_realizado = datetime.now()
             
             user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email, dep=usuario.dep)
-            encuesta = FortalecimientoSegudadInfo(user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
+            encuesta = FortalecimientoSegudadInfo(fecha_realizado=fecha_realizado, user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
             
             encuesta_id = await encuesta.create()
 
@@ -252,9 +255,11 @@ async def lineamiento_examen():
 
         else:
             usuario = await User.get(current_user.auth_id)
+
+            fecha_realizado = datetime.now()
             
             user_encuesta = UserData(user_id=current_user.auth_id  ,name=usuario.full_name, email=usuario.email, dep=usuario.dep)
-            encuesta = LineamientoSeguridadInfo(user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
+            encuesta = LineamientoSeguridadInfo(fecha_realizado=fecha_realizado, user_info=user_encuesta, pregunta_1=pregunta_1, pregunta_2=pregunta_2, pregunta_3=pregunta_3, pregunta_4=pregunta_4, pregunta_5=pregunta_5)
             
             encuesta_id = await encuesta.create()
 

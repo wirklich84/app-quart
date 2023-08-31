@@ -5,6 +5,7 @@ from quart_auth import AuthManager
 
 from routes.user import user_route
 from routes.cuestionario import cuestionario_route
+from routes.recursos_humanos import capacitacion_360_route
 
 app = Quart(__name__)
 
@@ -26,3 +27,4 @@ async def index():
 
 app.register_blueprint(user_route)
 app.register_blueprint(cuestionario_route)
+app.register_blueprint(capacitacion_360_route)

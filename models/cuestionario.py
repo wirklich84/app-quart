@@ -15,7 +15,7 @@ class Cuestionarios(UnionDoc):
     
 
 class FortalecimientoSegudadInfo(Document):
-    fecha_realizado : datetime = datetime.now()
+    fecha_realizado : datetime 
     user_info : UserData
     pregunta_1 : str
     pregunta_2 : str
@@ -37,7 +37,7 @@ class FortalecimientoSegudadInfo(Document):
 
 
 class LineamientoSeguridadInfo(Document):
-    fecha_realizado : datetime = datetime.now()
+    fecha_realizado : datetime
     user_info : UserData
     pregunta_1 : str
     pregunta_2 : str
